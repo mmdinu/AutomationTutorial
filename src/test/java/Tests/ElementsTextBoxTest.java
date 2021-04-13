@@ -1,21 +1,24 @@
-package Tests;
+    package Tests;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+    import org.junit.Assert;
+    import org.junit.Test;
+    import org.openqa.selenium.By;
+    import org.openqa.selenium.WebDriver;
+    import org.openqa.selenium.WebElement;
+    import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.System.*;
+    import java.util.concurrent.TimeUnit;
 
-public class ElementsTextBoxTest {
-    public WebDriver driver;
-    // selenium trebuie legat de o variabila - WebDriver - iar numele - driver -
+    import static java.lang.System.*;
 
-    @Test
-    public void TestAutomat(){
-        // o metoda...
+        public class ElementsTextBoxTest {
+        public WebDriver driver;
+
+// selenium trebuie legat de o variabila - WebDriver - iar numele - driver -
+
+        @Test
+        public void TestAutomat() {
+// o metoda...
         setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://demoqa.com/");
@@ -23,9 +26,9 @@ public class ElementsTextBoxTest {
 
         WebElement ElementsMenuWeb=driver.findElement(By.xpath("//div[@class='category-cards']/div[1]"));
         ElementsMenuWeb.click();
-        // vezi imaginea atribut valoare unica "//div[@class='category-cards']/div[1]"!
+// vezi imaginea atribut valoare unica "//div[@class='category-cards']/div[1]"!
 
-        // validari in testul de automation
+// validari in testul de automation
         WebElement MainHeaderWeb=driver.findElement(By.xpath("//div[@class='main-header']"));
         String ExpectedElementsPage="Elements";
         String ActualElementsPage=MainHeaderWeb.getText(); //metoda cu return
@@ -33,8 +36,9 @@ public class ElementsTextBoxTest {
 
         WebElement TextBoxSubmenuWeb=driver.findElement(By.id("item-0"));
         TextBoxSubmenuWeb.click();
-        // valoare unica a elementului  "item-0"
-        // interactionezi cu elementele, orice element cautat declarat, poate sa fie gasit si ulterior apicat!
+
+// valoare unica a elementului  "item-0"
+// interactionezi cu elementele, orice element cautat declarat, poate sa fie gasit si ulterior apicat!
 
         WebElement TextBoxWeb=driver.findElement(By.xpath("//div[@class='main-header']"));
         String ExpectedTextBoxPage="Text Box";
@@ -60,7 +64,6 @@ public class ElementsTextBoxTest {
         WebElement SubmitButtonWeb=driver.findElement(By.id("submit"));
         SubmitButtonWeb.click();
 
-
         /*
          TEMA:
          1. dupa submit apar datele introduse intr-un tabel
@@ -69,16 +72,18 @@ public class ElementsTextBoxTest {
         */
 
         // 1.
+        out.println("TEMA 1");
 
-        System.out.println (FullNameValue);
-        System.out.println (EmailValue);
-        System.out.println (CurrentAddressValue);
-        System.out.println (PermanentAddressValue);
-        System.out.println ();
-        System.out.println ("!dif we had done something wrong in the test, we would not have printed the above information!");
+        out.println ("Numele este: " + FullNameValue);
+        out.println ("Adresa de email este: " + EmailValue);
+        out.println ("Adresa curenta este: " + CurrentAddressValue);
+        out.println ("Adresa permanenta este:" + PermanentAddressValue);
+        out.println ();
+        out.println ("!dif we had done something wrong in the test, we would not have printed the above information!");
 
         //2.
-//
+        out.println("TEMA 2");
+
         WebElement NameBoxWeb = driver.findElement ( By.xpath ("//p[@id='name']"));
         String ExpectedElementName = ("p");
         String ActualElementsName = NameBoxWeb.getTagName ();
@@ -101,19 +106,19 @@ public class ElementsTextBoxTest {
 
 
         // 3.
+        out.println("TEMA 3");
 
         WebElement TextCheckBoxWeb=driver.findElement(By.id("item-1"));
         TextCheckBoxWeb.click();
 
-        WebElement CollapseButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-collapse-all']"));
-        CollapseButtonWeb.click();
-
+// with expand full button
         WebElement ExpandButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-expand-all']"));
         ExpandButtonWeb.click();
-
+        // deselect button/ remain wonted
         WebElement HomeButtonWeb = driver.findElement(By.xpath("//label[@for='tree-node-home']"));
         HomeButtonWeb.click();
-        //1 to 1 ; testing: rct-icon rct-icon-check; rct-option rct-option-expand-all ; id=tree-node-home; //input[@id='tree-node-home']; rct-icon rct-icon-check
+
+// hard to explain with 1 to 1 match; testing: rct-icon rct-icon-check; rct-option rct-option-expand-all ; id=tree-node-home; //input[@id='tree-node-home']; rct-icon rct-icon-check
 
         WebElement NotesButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-notes']"));
         NotesButtonWeb.click ();
@@ -130,8 +135,7 @@ public class ElementsTextBoxTest {
         WebElement GeneralButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-general']"));
         GeneralButtonWeb.click ();
 
-        WebElement WordFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-wordFile']"));
-        WordFileButtonWeb.click ();
+// WebElement WordFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-wordFile']")); WordFileButtonWeb.click ();
 
         WebElement ExcelFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-excelFile']"));
         ExcelFileButtonWeb.click ();
@@ -139,21 +143,37 @@ public class ElementsTextBoxTest {
         out.println ();
         out.println ( """
                 You have selected :
-                commands
-                angular
-                private
-                classified
+                       commands
+                       angular
+                       private
+                       classified
+                       wordFile
                 """ );
+// wait fot the 7 seconds before collapse
+
+        int milliseconds = 7000;
+
+        try { TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement CollapseButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-collapse-all']"));
+        CollapseButtonWeb.click();
 
 
 
-        // inchidere browser
+
+// wait for 7 seconds before closing the browser
+
+        try { TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
 
         driver.quit();
 
-        // sau close
-        // close inchide tabul curent
-        // quit inchide tot
+// close fot the current tabs, quit close all tabs!
 
 
     }
