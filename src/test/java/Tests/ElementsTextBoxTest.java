@@ -50,7 +50,7 @@
         FullNameWeb.sendKeys(FullNameValue);
 
         WebElement EmailWeb=driver.findElement(By.id("userEmail"));
-        String EmailValue="Pop.Ioan@gmail.com";
+        String EmailValue="pop.ioan@gmail.com";
         EmailWeb.sendKeys(EmailValue);
 
         WebElement CurrentAddressWeb=driver.findElement(By.id("currentAddress"));
@@ -74,39 +74,63 @@
         // 1.
         out.println("TEMA 1");
 
-        out.println ("Numele este: " + FullNameValue);
-        out.println ("Adresa de email este: " + EmailValue);
-        out.println ("Adresa curenta este: " + CurrentAddressValue);
-        out.println ("Adresa permanenta este:" + PermanentAddressValue);
-        out.println ();
-        out.println ("!dif we had done something wrong in the test, we would not have printed the above information!");
+        System.out.println ("Numele este: " + FullNameValue);
+        System.out.println ("Adresa de email este: " + EmailValue);
+        System.out.println ("Adresa curenta este: " + CurrentAddressValue);
+        System.out.println ("Adresa permanenta este:" + PermanentAddressValue);
+        System.out.println ();
+        System.out.println ("!dif we had done something wrong in the test, we would not have printed the above information!");
 
         //2.
-        out.println("TEMA 2");
+        System.out.println("TEMA 2");
 
+/*
         WebElement NameBoxWeb = driver.findElement ( By.xpath ("//p[@id='name']"));
-        String ExpectedElementName = ("p");
+        String ExpectedElementName = "p";
         String ActualElementsName = NameBoxWeb.getTagName ();
         Assert.assertEquals ( "!! the wanted text not displayed", ExpectedElementName, ActualElementsName);
+*/
 
+            WebElement NameBoxWeb = driver.findElement(By.id("name"));
+            String ExpectedElementName = "Name:Pop Ioan";
+            Assert.assertEquals(ExpectedElementName, NameBoxWeb.getText());
+            System.out.println(" Name:Pop Ioan is expected – the line test passed successfully");
+
+/*
         WebElement EmailBoxWeb = driver.findElement ( By.xpath ("//p[@id='email']"));
         String ExpectedElementEmail = ("p");
         String ActualElementsEmail = EmailBoxWeb.getTagName ();
         Assert.assertEquals ( "!! the wanted text not displayed", ExpectedElementEmail, ActualElementsEmail);
+ */
+            WebElement EmailBoxWeb = driver.findElement(By.id("email"));
+            String ExpectedElementEmail = "Email:pop.ioan@gmail.com";
+            Assert.assertEquals(ExpectedElementEmail, EmailBoxWeb.getText());
+            System.out.println(" Email:pop.ioan@gmail.com is expected – the line test passed successfully");
 
-        WebElement CurrentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='currentAddress']"));
-        String ExpectElementCurrentAddressBox = ("p");
-        String ActualElementCurrentAddressBox = CurrentAddressBoxWeb.getTagName ();
-        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementCurrentAddressBox, ActualElementCurrentAddressBox );
+//        WebElement CurrentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='currentAddress']"));
+//        String ExpectElementCurrentAddressBox = ("p");
+//        String ActualElementCurrentAddressBox = CurrentAddressBoxWeb.getTagName ();
+//        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementCurrentAddressBox, ActualElementCurrentAddressBox );
 
-        WebElement PermanentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='permanentAddress']"));
-        String ExpectElementPermanentAddressBox = ("p");
-        String ActualElementPermanentAddressBox = PermanentAddressBoxWeb.getTagName ();
-        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementPermanentAddressBox, ActualElementPermanentAddressBox );
+            WebElement CurrentAddressBoxWeb = driver.findElement(By.xpath("//div[@class='border col-md-12 col-sm-12']/p[3]"));
+            String ExpectElementCurrentAddressBox = "Current Address :Strada Eminescu, nr. 15";
+            Assert.assertEquals(ExpectElementCurrentAddressBox, CurrentAddressBoxWeb.getText());
+            System.out.println(" Current Address :Strada Eminescu, nr. 15 is expected – he line test passed successfully");
+
+//        WebElement PermanentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='permanentAddress']"));
+//        String ExpectElementPermanentAddressBox = ("p");
+//        String ActualElementPermanentAddressBox = PermanentAddressBoxWeb.getTagName ();
+//        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementPermanentAddressBox, ActualElementPermanentAddressBox );
+
+            WebElement PermanentAddressBoxWeb = driver.findElement(By.xpath("//div[@class='border col-md-12 col-sm-12']/p[4]"));
+            String ExpectElementPermanentAddressBox = "Permananet Address :Strada Eminescu, nr. 15";
+            Assert.assertEquals(ExpectElementPermanentAddressBox, PermanentAddressBoxWeb.getText());
+            System.out.println(" Permananet Address :Strada Eminescu, nr. 15 – he line test passed successfully");
 
 
-        // 3.
-        out.println("TEMA 3");
+
+            // 3.
+        System.out.println("TEMA 3");
 
         WebElement TextCheckBoxWeb=driver.findElement(By.id("item-1"));
         TextCheckBoxWeb.click();
@@ -140,8 +164,8 @@
         WebElement ExcelFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-excelFile']"));
         ExcelFileButtonWeb.click ();
 
-        out.println ();
-        out.println ( """
+        System.out.println ();
+        System.out.println ( """
                 You have selected :
                        commands
                        angular
