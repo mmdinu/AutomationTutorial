@@ -1,4 +1,4 @@
-package Tests;
+package HomeWorkAutomation;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,78 +11,47 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class PracticeFormTest {
+public class Selenium {
 
     public WebDriver driver;
 
     @Test
     public void TestAutomat() {
+
         System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
 
-        // Forms Menu
-        WebElement FormsMenuWeb = driver.findElement(By.xpath("//div[@class='category-cards']/div[2]"));
-        FormsMenuWeb.click();
-        // Practice Forms
-        WebElement PracticeFormSubmenuWeb = driver.findElement(By.xpath("//div[@class='accordion']//div[@class='element-list collapse show']//li"));
-        PracticeFormSubmenuWeb.click();
-        // add First Name
-        WebElement FirstNameWeb = driver.findElement(By.id("firstName"));
-        String FirstNameValue = "Moldovan";
-        FirstNameWeb.sendKeys(FirstNameValue);
-        // add Last Name
-        WebElement LastNameWeb = driver.findElement(By.id("lastName"));
-        String LastNameValue = "Ioan";
-        LastNameWeb.sendKeys(LastNameValue);
-        // add Email
-        WebElement EmailWeb = driver.findElement(By.id("userEmail"));
-        String EmailValue = "moldovan.ioan@gmail.com";
-        EmailWeb.sendKeys(EmailValue);
-        // mark Gender
-        WebElement GenderCheckBoxWeb = driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
-        GenderCheckBoxWeb.click(); //clicks on the check box
-        // add Mobile (10 Digits)
-        WebElement MobileNumberWeb = driver.findElement(By.id("userNumber"));
-        String MobileNumberValue = "0734522346";
-        MobileNumberWeb.sendKeys(MobileNumberValue);
-        // add Date of Birth
+
+        /*Locate by ID Attribute
+          URL - http://www.demoqa.com/automation-practice-form
+         */
+
+        driver.get("https://www.demoqa.com/automation-practice-form");
+        driver.findElement(By.id("firstName")).sendKeys("Popa");
+        driver.findElement(By.id("lastName")).sendKeys("Vlad");
+        driver.findElement(By.id("userEmail")).sendKeys("popa.vlad@yahoo.com");
+        driver.findElement(By.xpath("//label[@for='gender-radio-1']")).click();
+        driver.findElement(By.id("userNumber")).sendKeys("0734221882");
+        driver.findElement(By.id("dateOfBirthInput")).click();
         WebElement DateOfBirthWeb = driver.findElement(By.id("dateOfBirthInput"));
         DateOfBirthWeb.click();
-        // add select Month
         WebElement MonthOfBirthWeb = driver.findElement(By.className("react-datepicker__month-select"));
         Select MonthSelect = new Select(MonthOfBirthWeb);
         MonthSelect.selectByVisibleText("February");
-        // add select Year
         WebElement YearOfBirthWeb = driver.findElement(By.className("react-datepicker__year-select"));
         Select YearSelect = new Select(YearOfBirthWeb);
         YearSelect.selectByVisibleText("1964");
-
-
-//        List< WebElement > DaysOptionsListWeb = driver.findElements(By.xpath("//div[@class='react-datepicker__month']/div/div"));
-//        for (int index = 0; index < DaysOptionsListWeb.size(); index++) {
-//            String CurrentValue = DaysOptionsListWeb.get(index).getAttribute("aria-label");
-
         List< WebElement > DaysOptionsListWeb = driver.findElements(By.xpath("//div[@class='react-datepicker__month']/div/div"));
         for (WebElement webElement : DaysOptionsListWeb) {
             String CurrentValue = webElement.getAttribute("aria-label");
-
-
-//        WebElement DayOfBirthWeb = driver.findElement(By.name("react-datepicker__day react-datepicker__day--016 react-datepicker__day--selected react-datepicker__day--weekend"));
-//        Select DaySelect = new Select(DayOfBirthWeb);
-//        DaySelect.selectByVisibleText("16");
-//        DateOfBirthWeb.click();                       NOT WORK!
-
-
             if (CurrentValue.contains("February") & CurrentValue.contains("16")) {
                 webElement.click();
                 break;
 
             }
         }
-
-
         WebElement SubjectsWeb = driver.findElement(By.id("subjectsInput"));
         String SubjectsValue = "Computer Science";
         SubjectsWeb.sendKeys(SubjectsValue);
@@ -135,7 +104,7 @@ public class PracticeFormTest {
         WebElement SubmitWeb = driver.findElement(By.id("submit"));
         SubmitWeb.sendKeys(Keys.ENTER);
 
-        // wait for 5 seconds
+        // wait for 5 seconds before closing the browser
         int milliseconds = 5000;
         try {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
@@ -145,22 +114,70 @@ public class PracticeFormTest {
         WebElement CloseWeb=driver.findElement(By.id("closeLargeModal"));
         CloseWeb.click();
 
-        // wait for 5 seconds before closing the browser
-        try {
-            TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+            // wait for 5 seconds before closing the browser
+            try {
+                TimeUnit.MILLISECONDS.sleep(milliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+        /*
+           Locate by Name attribute
+           URL - http://www.demoqa.com/automation-practice-form
+         */
+
+            driver.get("https://www.demoqa.com/automation-practice-form");
+            driver.findElement(By.name("gender"));
+
+        /*
+           Locate by className attribute
+           URL - http://www.demoqa.com/automation-practice-form
+         */
+
+            driver.get("https://www.demoqa.com/automation-practice-form");
+            driver.findElement(By.className("practice-form-wrapper"));
+
+        /*
+           Locate by linkText and ParticalLinkText attribute
+           URL - http://www.demoqa.com/links
+         */
+
+            driver.get("https://www.demoqa.com/links");
+            //linkText
+            driver.findElement(By.linkText("Home"));
+            //partialLinkText
+            driver.findElement(By.partialLinkText("Ho"));
+
+        /*
+           Locate by tagName attribute
+           URL - http://www.demoqa.com/links
+         */
+
+            driver.get("https://www.demoqa.com/links");
+            List< WebElement > list = driver.findElements(By.tagName("a"));
+
+
+        /*
+           Locate by cssSelector attribute
+           URL - http://www.demoqa.com/text-box
+         */
+
+            driver.get("https://www.demoqa.com/text-box");
+            driver.findElement(By.cssSelector("input[id= ‘userName’]"));
+
+
+        /*
+           Locate by xpath attribute
+           URL - http://www.demoqa.com/text-box
+         */
+
+            driver.get("https://www.demoqa.com/text-box");
+            driver.findElement(By.xpath("//input[@id='userName']"));
+
+            driver.close();
+
+
         }
-
-
-
-        // or....not work!!
-        // Thread.sleep(5000);
-
-        driver.quit();
-
-// close fot the current tabs, quit close all tabs!
-
-
-    }
 }

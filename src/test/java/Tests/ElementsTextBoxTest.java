@@ -70,132 +70,114 @@
          2. validam fiecare valoare introdusa acolo cu assert
          3. facem un test pentru CheckBox
         */
-
+            System.out.println ();
         // 1.
         out.println("TEMA 1");
 
-        System.out.println ("Numele este: " + FullNameValue);
-        System.out.println ("Adresa de email este: " + EmailValue);
-        System.out.println ("Adresa curenta este: " + CurrentAddressValue);
-        System.out.println ("Adresa permanenta este:" + PermanentAddressValue);
-        System.out.println ();
-        System.out.println ("!dif we had done something wrong in the test, we would not have printed the above information!");
+            System.out.println ("Numele este: " + FullNameValue);
+            System.out.println ("Adresa de email este: " + EmailValue);
+            System.out.println ("Adresa curenta este: " + CurrentAddressValue);
+            System.out.println ("Adresa permanenta este:" + PermanentAddressValue);
+            System.out.println ();
+            System.out.println ("NOTE! - dif we had done something wrong in the test, we would not have printed the above information!");
+            System.out.println ();
 
         //2.
         System.out.println("TEMA 2");
 
-/*
-        WebElement NameBoxWeb = driver.findElement ( By.xpath ("//p[@id='name']"));
-        String ExpectedElementName = "p";
-        String ActualElementsName = NameBoxWeb.getTagName ();
-        Assert.assertEquals ( "!! the wanted text not displayed", ExpectedElementName, ActualElementsName);
-*/
 
             WebElement NameBoxWeb = driver.findElement(By.id("name"));
             String ExpectedElementName = "Name:Pop Ioan";
             Assert.assertEquals(ExpectedElementName, NameBoxWeb.getText());
             System.out.println(" Name:Pop Ioan is expected – the line test passed successfully");
 
-/*
-        WebElement EmailBoxWeb = driver.findElement ( By.xpath ("//p[@id='email']"));
-        String ExpectedElementEmail = ("p");
-        String ActualElementsEmail = EmailBoxWeb.getTagName ();
-        Assert.assertEquals ( "!! the wanted text not displayed", ExpectedElementEmail, ActualElementsEmail);
- */
+
             WebElement EmailBoxWeb = driver.findElement(By.id("email"));
             String ExpectedElementEmail = "Email:pop.ioan@gmail.com";
             Assert.assertEquals(ExpectedElementEmail, EmailBoxWeb.getText());
             System.out.println(" Email:pop.ioan@gmail.com is expected – the line test passed successfully");
 
-//        WebElement CurrentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='currentAddress']"));
-//        String ExpectElementCurrentAddressBox = ("p");
-//        String ActualElementCurrentAddressBox = CurrentAddressBoxWeb.getTagName ();
-//        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementCurrentAddressBox, ActualElementCurrentAddressBox );
 
             WebElement CurrentAddressBoxWeb = driver.findElement(By.xpath("//div[@class='border col-md-12 col-sm-12']/p[3]"));
             String ExpectElementCurrentAddressBox = "Current Address :Strada Eminescu, nr. 15";
             Assert.assertEquals(ExpectElementCurrentAddressBox, CurrentAddressBoxWeb.getText());
             System.out.println(" Current Address :Strada Eminescu, nr. 15 is expected – he line test passed successfully");
 
-//        WebElement PermanentAddressBoxWeb = driver.findElement (By.xpath ("//p[@id='permanentAddress']"));
-//        String ExpectElementPermanentAddressBox = ("p");
-//        String ActualElementPermanentAddressBox = PermanentAddressBoxWeb.getTagName ();
-//        Assert.assertEquals ( "!! the wanted text not displayed", ExpectElementPermanentAddressBox, ActualElementPermanentAddressBox );
 
             WebElement PermanentAddressBoxWeb = driver.findElement(By.xpath("//div[@class='border col-md-12 col-sm-12']/p[4]"));
             String ExpectElementPermanentAddressBox = "Permananet Address :Strada Eminescu, nr. 15";
             Assert.assertEquals(ExpectElementPermanentAddressBox, PermanentAddressBoxWeb.getText());
             System.out.println(" Permananet Address :Strada Eminescu, nr. 15 – he line test passed successfully");
+            System.out.println ();
 
 
 
             // 3.
-        System.out.println("TEMA 3");
+            System.out.println("TEMA 3");
 
-        WebElement TextCheckBoxWeb=driver.findElement(By.id("item-1"));
-        TextCheckBoxWeb.click();
+            WebElement TextCheckBoxWeb=driver.findElement(By.id("item-1"));
+            TextCheckBoxWeb.click();
 
 // with expand full button
-        WebElement ExpandButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-expand-all']"));
-        ExpandButtonWeb.click();
+            WebElement ExpandButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-expand-all']"));
+            ExpandButtonWeb.click();
         // deselect button/ remain wonted
-        WebElement HomeButtonWeb = driver.findElement(By.xpath("//label[@for='tree-node-home']"));
-        HomeButtonWeb.click();
+            WebElement HomeButtonWeb = driver.findElement(By.xpath("//label[@for='tree-node-home']"));
+            HomeButtonWeb.click();
 
 // hard to explain with 1 to 1 match; testing: rct-icon rct-icon-check; rct-option rct-option-expand-all ; id=tree-node-home; //input[@id='tree-node-home']; rct-icon rct-icon-check
 
-        WebElement NotesButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-notes']"));
-        NotesButtonWeb.click ();
+            WebElement NotesButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-notes']"));
+            NotesButtonWeb.click ();
 
-        WebElement ReactButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-react']"));
-        ReactButtonWeb.click ();
+            WebElement ReactButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-react']"));
+            ReactButtonWeb.click ();
 
-        WebElement VeuButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-veu']"));
-        VeuButtonWeb.click ();
+            WebElement VeuButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-veu']"));
+            VeuButtonWeb.click ();
 
-        WebElement PublicButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-public']"));
-        PublicButtonWeb.click ();
+            WebElement PublicButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-public']"));
+            PublicButtonWeb.click ();
 
-        WebElement GeneralButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-general']"));
-        GeneralButtonWeb.click ();
+            WebElement GeneralButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-general']"));
+            GeneralButtonWeb.click ();
 
 // WebElement WordFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-wordFile']")); WordFileButtonWeb.click ();
 
-        WebElement ExcelFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-excelFile']"));
-        ExcelFileButtonWeb.click ();
+            WebElement ExcelFileButtonWeb = driver.findElement (By.xpath("//label[@for='tree-node-excelFile']"));
+            ExcelFileButtonWeb.click ();
 
-        System.out.println ();
-        System.out.println ( """
-                You have selected :
-                       commands
-                       angular
-                       private
-                       classified
-                       wordFile
+            System.out.println ( """
+                 You have selected :
+                        commands
+                        angular
+                        private
+                        classified
+                        wordFile
                 """ );
 // wait fot the 7 seconds before collapse
 
-        int milliseconds = 7000;
+            int milliseconds = 7000;
 
-        try { TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
+            try { TimeUnit.MILLISECONDS.sleep(milliseconds);
+            } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebElement CollapseButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-collapse-all']"));
-        CollapseButtonWeb.click();
+            WebElement CollapseButtonWeb = driver.findElement(By.xpath ("//button[@class='rct-option rct-option-collapse-all']"));
+            CollapseButtonWeb.click();
 
 
 
 
 // wait for 7 seconds before closing the browser
 
-        try { TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
+            try { TimeUnit.MILLISECONDS.sleep(milliseconds);
+            } catch (InterruptedException e) {
                 e.printStackTrace();
         }
 
-        driver.quit();
+            driver.quit();
 
 // close fot the current tabs, quit close all tabs!
 
