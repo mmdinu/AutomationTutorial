@@ -150,31 +150,30 @@ public class Selenium {
             //partialLinkText
             driver.findElement(By.partialLinkText("Ho"));
 
+        // wait for 5 seconds before closing the browser
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         /*
            Locate by tagName attribute
            URL - http://www.demoqa.com/links
          */
 
             driver.get("https://www.demoqa.com/links");
-            List< WebElement > list = driver.findElements(By.tagName("a"));
+            List< WebElement > List = driver.findElements(By.tagName("a"));
+
+        // wait for 5 seconds before closing the browser
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
-        /*
-           Locate by cssSelector attribute
-           URL - http://www.demoqa.com/text-box
-         */
 
-            driver.get("https://www.demoqa.com/text-box");
-            driver.findElement(By.cssSelector("input[id= ‘userName’]"));
-
-
-        /*
-           Locate by xpath attribute
-           URL - http://www.demoqa.com/text-box
-         */
-
-            driver.get("https://www.demoqa.com/text-box");
-            driver.findElement(By.xpath("//input[@id='userName']"));
 
             driver.close();
 
