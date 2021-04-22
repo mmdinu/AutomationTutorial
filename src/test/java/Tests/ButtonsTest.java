@@ -35,13 +35,12 @@ public class ButtonsTest {
         String ActualElementsPage = MainHeaderWeb.getText(); //metoda cu  return
         assertEquals("The wanted page was not found/displayed", ExpectedElementsPage, ActualElementsPage);
 
-        int seconds = 3;
-
         // declaram pagina cu butoane
         WebElement ButtonsWeb = driver.findElement(By.id("item-4"));
         ButtonsWeb.click();
         
         // wait for 5 seconds - se afiseaza tabelul cu noul introdus
+        int seconds = 3;
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
