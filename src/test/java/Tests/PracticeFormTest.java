@@ -1,5 +1,6 @@
 package Tests;
 
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -114,16 +115,33 @@ public class PracticeFormTest {
 */
 
 
+
+        // another simple wey to print in box, with next line!
+//        driver.findElement(By.id("currentAddress"))
+//                .sendKeys(" Str. Mircea Eliade, nr. 15A \n Cluj-Napoca \n Romania");
+
+        // validation not work
+//        String ExpectCurrentAddressValue=" Str. Mircea Eliade, nr. 15A \n Cluj-Napoca \n Romania";
+//        Assert.assertEquals(ExpectCurrentAddressValue, CurrentAddressWeb.getText());
+//        System.out.println(" the line test for Current Address passed successfully");
+
+
+//        WebElement StateWeb=driver.findElement(By.id("state"));
+//        StateWeb.click();
+
         WebElement StateWeb=driver.findElement(By.id("react-select-3-input"));
         String StateValue="Haryana";
         StateWeb.sendKeys(StateValue);
         StateWeb.sendKeys(Keys.ENTER);
         StateWeb.sendKeys(Keys.TAB);
 
+
         WebElement CityWeb=driver.findElement(By.id("react-select-4-input"));
         String CityValue="Karnal";
         CityWeb.sendKeys(CityValue);
         CityWeb.sendKeys(Keys.ENTER);
+
+
         StateWeb.sendKeys(Keys.TAB);
 
 
@@ -135,7 +153,8 @@ public class PracticeFormTest {
         WebElement SubmitWeb = driver.findElement(By.id("submit"));
         SubmitWeb.sendKeys(Keys.ENTER);
 
-        // wait for 5 seconds
+
+        // wait for 5 seconds before closing the browser
         int milliseconds = 5000;
         try {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
